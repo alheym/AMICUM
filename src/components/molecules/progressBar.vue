@@ -1,7 +1,11 @@
 <template>
-  <div class="diagram progress" :class="class" :data-percent="percent">
-    <div class="piece left"></div>
-    <div class="piece right"></div>
+  <div class="progress" :class="class" :style="`--i:${progress};--clr:${color};`">
+    <div class="progress__category">
+      <div class="progress__category-value">
+        {{ score }}
+        <span class="progress__category-descr">{{ descr }}</span>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -9,9 +13,25 @@
 export default {
   props: {
     class: String,
-    percent: {
+    value: {
+      type: String,
+      default: "",
+    },
+    score: {
+      type: String,
+      default: "",
+    },
+    descr: {
+      type: String,
+      default: "",
+    },
+    progress: {
       type: Number,
       default: 0,
+    },
+    color: {
+      type: String,
+      required: true,
     },
   },
 };
@@ -20,84 +40,78 @@ export default {
 <style lang="scss" scoped>
 @import "../../assets/styles/main";
 
-.diagram {
-  width: calc((120px / 1080px) * 100vh);
-  height: calc((120px / 1080px) * 100vh);
-  border-radius: 50%;
-  background: $notification;
+.progress {
   position: relative;
-  overflow: hidden;
-}
-.diagram::before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: calc((10px / 1080px) * 100vh);
-  left: calc((10px / 1080px) * 100vh);
-  right: calc((10px / 1080px) * 100vh);
-  bottom: calc((10px / 1080px) * 100vh);
+  width: calc((120px / 1920px) * 100vw);
+  height:  calc((120px / 1920px) * 100vw);
   border-radius: 50%;
-  background: $main;
-  z-index: 3;
-  opacity: 1;
+  background: $profile linear-gradient(to right, transparent 50%, var(--clr) 0);
+
+  &::before {
+    content: "";
+    display: block;
+    height: 100%;
+    margin-left: 50%;
+    transform-origin: left;
+    border-radius: 0 100% 100% 0/50%;
+    background: var(--clr);
+    transform: rotate(calc(((var(--i) - 50) * 0.01turn)));
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: calc((10px / 1920px) * 100vw);
+    border-radius: 50%;
+    background: $main;
+  }
+
+  &.contract {
+    &::after {
+      background-image: url("/src/assets/img/contract.png");
+      background-size: calc((64px / 1920px) * 100vw);
+      background-repeat: no-repeat;
+      background-position: 70% 50%;
+    }
+  }
+
+  &.test {
+    &::after {
+      background-image: url("/src/assets/img/test.png");
+      background-size: calc((64px / 1920px) * 100vw);
+      background-repeat: no-repeat;
+      background-position: 65% 50%;
+    }
+  }
+
+  &.less_50 {
+    &::before {
+      background: $profile;
+      transform: rotate(calc(((var(--i) - 0) * 0.01turn)));
+    }
+  }
+
+  &__category {
+    &-value {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: calc((44px / 1920px) * 100vw);
+      z-index: 1;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    &-descr {
+      font-size: calc((16px / 1920px) * 100vw);
+      font-weight: 500;
+    }
+  }
 }
-.diagram .piece {
-  width: 100%;
-  height: 100%;
-  left: 0;
-  right: 0;
-  overflow: hidden;
-  position: absolute;
-}
-.diagram .piece::before {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 50%;
-  height: 100%;
-}
-.diagram .piece.left {
-  transform: rotate(0deg);
-  z-index: 2;
-  border-radius: 50%; /* only FireFox < 75.0v (fix bug)*/
-}
-.diagram.over_50 .piece.left {
-  transform: rotate(180deg);
-}
-.diagram .piece.right {
-  transform: rotate(180deg);
-  z-index: 1;
-  border-radius: 50%; /* only FireFox < 75.0v (fix bug)*/
-}
-.diagram.over_50 .piece.right {
-  transform: rotate(360deg);
-}
-.diagram .left::before {
-  background: $profile;
-}
-.diagram.over_50 .left::before {
-  background: $notification;
-}
-.diagram .right::before {
-  background: $profile;
-}
-.diagram .text {
-  position: absolute;
-  z-index: 3;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.diagram .text b {
-  font-size: 32px;
-}
-.diagram .text span {
-  font-size: 16px;
-  display: block;
-}
+
 </style>

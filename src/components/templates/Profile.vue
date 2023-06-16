@@ -1,38 +1,10 @@
 <script>
 import ProgressBar from "../molecules/progressBar.vue";
+import testImage from "@/assets/img/test.png";
 
 export default {
   components: {
     ProgressBar,
-  },
-  data() {
-    return {
-      percent: 14,
-    };
-  },
-
-  mounted() {
-    this.progressView();
-  },
-  watch: {
-    precent() {
-      this.progressView();
-    },
-  },
-  methods: {
-    progressView() {
-      const diagramBoxes = this.$el.querySelectorAll(".diagram.progress");
-      console.log(diagramBoxes);
-      diagramBoxes.forEach((box) => {
-        const deg = (360 * box.dataset.percent) / 100 + 180;
-        if (box.dataset.percent >= 50) {
-          box.classList.add("over_50");
-        } else {
-          box.classList.remove("over_50");
-        }
-        box.querySelector(".piece.right").style.transform = `rotate(${deg}deg)`;
-      });
-    },
   },
 };
 </script>
@@ -42,7 +14,7 @@ export default {
     <div class="profile__menu">
       <div class="profile__menu-data">XX.XX.XXXX</div>
       <div class="profile__menu-out">Выход</div>
-      <div class="profile__menu-theme"></div>
+      <div class="profile__menu-theme">toggle</div>
     </div>
     <div class="profile__info">
       <div class="profile__info-name">Фамилия Имя Отчество</div>
@@ -54,36 +26,28 @@ export default {
     <div class="profile__progress">
       <div class="profile__progress-item">
         <div class="profile__progress-item-title">Инструктаж</div>
-
-        <ProgressBar class="diagram progress over_50" :percent="100" />
-
-        <!-- <div class="diagram progress over_50" data-percent="10">
-          <div class="piece left"></div>
-          <div
-            class="piece right"
-            style="transform: rotate(calc(180deg + 100deg * 360 / 100))"
-          ></div>
-          <div class="text">
-            <div>
-              <img src="" alt="" />
-              <b>3</b>
-              <span>дня</span>
-            </div>
-          </div>
-        </div> -->
+        <ProgressBar class="contract" progress="100" color="#add919" />
       </div>
       <div class="profile__progress-item">
-        <div class="profile__progress-item-title">Инструктаж</div>
+        <div class="profile__progress-item-title">Предсменный экзаменатор</div>
 
-        <ProgressBar class="diagram progress over_50" :percent="100" />
+        <ProgressBar class="test" progress="100" color="#add919" />
       </div>
+
       <div class="profile__progress-item">
-        <div class="profile__progress-item-title">Инструктаж</div>
-        <ProgressBar class="diagram progress" :percent="12" />
+        <div class="profile__progress-item-title">Тестов выполнено</div>
+        <ProgressBar class="less_50" progress="25" score="12" color="#add919" />
       </div>
+
       <div class="profile__progress-item">
-        <div class="profile__progress-item-title">Инструктаж</div>
-        <ProgressBar class="diagram progress over_50" :percent="100" />
+        <div class="profile__progress-item-title">Аттестация через</div>
+        <ProgressBar
+          class="less_50 with_descr"
+          progress="15"
+          score="3"
+          descr="дня"
+          color="#ef7f1b"
+        />
       </div>
     </div>
   </section>
@@ -93,18 +57,18 @@ export default {
 @import "../../assets/styles/main";
 
 .profile {
-  max-width: calc((660px / 1920px) * 100vw);
+  width: calc((660px / 1920px) * 100vw);
   display: flex;
-  padding: $grid_margin;
+  padding: calc((30px / 1920px) * 100vw);
   flex-direction: column;
   background-color: $profile;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-top-right-radius: calc((20px / 1080px) * 100vh);
+  border-bottom-right-radius: calc((20px / 1080px) * 100vh);
   box-shadow: 5px 2px 7px rgba(0, 0, 0, 0.3);
 
   &__menu {
     display: flex;
-    height: calc((240px / 1080px) * 100vh);
+    height: 22.22%;
     justify-content: space-between;
 
     &-out {
@@ -112,10 +76,10 @@ export default {
   }
 
   &__info {
-    padding: $grid_gutter $grid_gutter * 3;
+    padding: calc((30px / 1920px) * 100vw);
     background-color: $main;
-    border-radius: 3px;
-    box-shadow: 1px 4px 3px rgba(0, 0, 0, 0.2);
+    border-radius: calc((3px / 1080px) * 100vh);
+    box-shadow: 5px 4px 7px rgba(0, 0, 0, 0.2);
 
     &-name {
       font-weight: 600;
@@ -142,23 +106,24 @@ export default {
   &__progress {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: calc((20px / 1080px) * 100vh);
-    margin-top: calc((20px / 1920px) * 100vw);
+    grid-gap: calc((20px / 1920px) * 100vw);
+    margin-top: calc((20px / 1080px) * 100vh);
 
     &-item {
-      padding-left: calc((60px / 1080px) * 100vh);
-      padding-right: calc((60px / 1080px) * 100vh);
-
+      padding: 0 calc((60px / 1920px) * 100vw) calc((20px / 1920px) * 100vw);
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
       align-items: center;
-      border-radius: 3px;
+      border-radius: calc((3px / 1080px) * 100vh);
       background-color: $main;
       width: calc((280px / 1920px) * 100vw);
       height: calc((260px / 1080px) * 100vh);
+      box-shadow: 5px 4px 7px rgba(0, 0, 0, 0.2);
 
       &-title {
+        height: calc((44px / 1080px) * 100vh);
+        text-align: center;
         font-size: calc((16px / 1920px) * 100vw);
       }
     }
