@@ -1,14 +1,3 @@
-<template>
-  <div class="progress" :class="class" :style="`--i:${progress};--clr:${color};`">
-    <div class="progress__category">
-      <div class="progress__category-value">
-        {{ score }}
-        <span class="progress__category-descr">{{ descr }}</span>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script>
 export default {
   props: {
@@ -37,13 +26,24 @@ export default {
 };
 </script>
 
+<template>
+  <div class="progress" :class="class" :style="`--i:${progress};--clr:${color};`">
+    <div class="progress__category">
+      <div class="progress__category-value">
+        {{ score }}
+        <span class="progress__category-descr">{{ descr }}</span>
+      </div>
+    </div>
+  </div>
+</template>
+
 <style lang="scss" scoped>
 @import "../../assets/styles/main";
 
 .progress {
   position: relative;
   width: calc((120px / 1920px) * 100vw);
-  height:  calc((120px / 1920px) * 100vw);
+  height: calc((120px / 1920px) * 100vw);
   border-radius: 50%;
   background: $profile linear-gradient(to right, transparent 50%, var(--clr) 0);
 
@@ -113,5 +113,4 @@ export default {
     }
   }
 }
-
 </style>
