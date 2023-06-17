@@ -1,16 +1,11 @@
 <script>
-import ProgressBar from "../molecules/progressBar.vue";
+import ProgressBar from "../atoms/progressBar.vue";
 import ThemeSwitch from "../atoms/toggleSwitch.vue";
 
 export default {
   components: {
     ProgressBar,
     ThemeSwitch,
-  },
-  data() {
-    return {
-      darkTheme: false, // Изначальное значение темы (false - светлая, true - темная)
-    };
   },
   props: {
     fullName: {
@@ -51,8 +46,7 @@ export default {
       </div>
     </div>
 
-    <ThemeSwitch :dark-theme="darkTheme" />
-    <div class="profile__theme">toggle</div>
+    <ThemeSwitch />
 
     <div class="profile__info">
       <div class="profile__info-fullName">{{ fullName }}</div>
@@ -97,7 +91,7 @@ export default {
 .profile {
   width: 34.375%;
   display: flex;
-  padding: calc((30px / 1920px) * 100vw);
+  padding: calc((40px / 1920px) * 100vw);
   flex-direction: column;
   background-color: $profile;
   border-top-right-radius: calc((20px / 1080px) * 100vh);
@@ -137,7 +131,7 @@ export default {
   }
 
   &__info {
-    padding: calc((30px / 1920px) * 100vw);
+    padding: calc((20px / 1920px) * 100vw) calc((30px / 1920px) * 100vw);
     background-color: $main;
     border-radius: calc((3px / 1080px) * 100vh);
     box-shadow: 5px 4px 7px rgba(0, 0, 0, 0.2);
@@ -160,7 +154,7 @@ export default {
 
     &-position {
       font-size: calc((16px / 1920px) * 100vw);
-      margin-bottom: calc((5px / 1080px) * 100vh);
+      // margin-bottom: calc((5px / 1080px) * 100vh);
     }
   }
 
@@ -178,7 +172,7 @@ export default {
       align-items: center;
       border-radius: calc((3px / 1080px) * 100vh);
       background-color: $main;
-      width: calc((280px / 1920px) * 100vw);
+      width: calc((260px / 1920px) * 100vw);
       height: calc((260px / 1080px) * 100vh);
       box-shadow: 5px 4px 7px rgba(0, 0, 0, 0.2);
 
