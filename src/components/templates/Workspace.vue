@@ -60,19 +60,17 @@ export default {
 @import "../../assets/styles/main";
 
 .workspace {
-  padding: calc((10px / 1920px) * 100vw) calc((15px / 1920px) * 100vw);
+  padding: 0.52vw 0.78vw;
   width: 100%;
   display: flex;
   flex-direction: column;
 
   &__logo {
     margin-left: auto;
-    // margin-bottom: calc((10px / 1920px) * 100vw);
-    width: calc((216px / 1920px) * 100vw);
-    height: calc((76px / 1920px) * 100vw);
-    // background-color: yellow;
+    width: 11.25vw;
+    height: 3.96vw;
     background-image: url("/src/assets/img/logo.png");
-    background-size: calc((216px / 1920px) * 100vw) calc((76px / 1920px) * 100vw);
+    background-size: 11.25vw 3.96vw;
     background-repeat: no-repeat;
   }
 
@@ -80,8 +78,8 @@ export default {
     align-self: center;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: calc((100px / 1920px) * 100vw);
-    margin: calc((155px / 1920px) * 100vw) calc((175px / 1920px) * 100vw) 0;
+    grid-gap: 5.2vw;
+    margin: 5.99vw 9.11vw 0;
   }
 }
 </style>

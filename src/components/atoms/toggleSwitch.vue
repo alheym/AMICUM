@@ -8,8 +8,8 @@ export default {
   methods: {
     toggleSwitch() {
       if (this.isChecked) {
-        console.log("moon");
-      } else console.log("sun");
+        console.log("theme: moon");
+      } else console.log("theme: sun");
     },
   },
 };
@@ -18,7 +18,7 @@ export default {
 <template>
   <div class="themeSwitch">
     <label class="themeSwitch__switch">
-      <input type="checkbox" v-model="isChecked" @change="toggleSwitch" />
+      <input type="checkbox" name="switch" v-model="isChecked" @change="toggleSwitch" />
       <span class="themeSwitch__switch-slider"></span>
     </label>
   </div>
@@ -31,8 +31,8 @@ export default {
   &__switch {
     position: relative;
     display: inline-block;
-    width: calc((65px / 1920px) * 100vw);
-    height: calc((20px / 1920px) * 100vw);
+    width: 3.38vw;
+    height: 1.04vw;
 
     input {
       display: none;
@@ -46,23 +46,21 @@ export default {
       right: 0;
       bottom: 0;
       background-color: $main;
-      -webkit-transition: 0.4s;
       transition: 0.4s;
-      border-radius: calc((34px / 1920px) * 100vw);
+      border-radius: 1.77vw;
 
       &::before {
         position: absolute;
         content: "";
-        height: calc((64px / 1920px) * 100vw);
-        width: calc((64px / 1920px) * 100vw);
-        left: calc((-22px / 1920px) * 100vw);
-        bottom: calc((-22px / 1920px) * 100vw);
-        background-image: url("/src/assets/img/sun.png");
-        background-size: calc((64px / 1920px) * 100vw);
-        background-repeat: no-repeat;
-        -webkit-transition: 0.4s;
+        height: 3.33vw;
+        width: 3.33vw;
+        left: -1.14vw;
+        bottom: -1.14vw;
         transition: 0.4s;
         border-radius: 50%;
+        background-image: url("/src/assets/img/sun.png");
+        background-size: 3.33vw;
+        background-repeat: no-repeat;
       }
     }
   }
@@ -73,13 +71,11 @@ input:checked + .themeSwitch__switch-slider {
 }
 
 input:checked + .themeSwitch__switch-slider:before {
-  -webkit-transform: translateX(calc((40px / 1920px) * 100vw));
-  -ms-transform: translateX(calc((40px / 1920px) * 100vw));
-  transform: translateX(calc((40px / 1920px) * 100vw));
-  left: calc((-13px / 1920px) * 100vw);
-  bottom: calc((-18px / 1920px) * 100vw);
+  transform: translateX(2.08vw);
+  left: -0.68vw;
+  bottom: -0.94vw;
   background-image: url("/src/assets/img/moon.png");
-  background-size: calc((64px / 1920px) * 100vw);
+  background-size: 3.33vw;
   background-repeat: no-repeat;
   background-position: 50% 50%;
 }

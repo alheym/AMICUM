@@ -2,10 +2,6 @@
 export default {
   props: {
     class: String,
-    value: {
-      type: String,
-      default: "",
-    },
     score: {
       type: String,
       default: "",
@@ -16,6 +12,7 @@ export default {
     },
     progress: {
       type: Number,
+      required: true,
       default: 0,
     },
     color: {
@@ -42,8 +39,8 @@ export default {
 
 .progress {
   position: relative;
-  width: calc((120px / 1920px) * 100vw);
-  height: calc((120px / 1920px) * 100vw);
+  width: 6.25vw;
+  height: 6.25vw;
   border-radius: 50%;
   background: $profile linear-gradient(to right, transparent 50%, var(--clr) 0);
 
@@ -61,7 +58,7 @@ export default {
   &::after {
     content: "";
     position: absolute;
-    inset: calc((10px / 1920px) * 100vw);
+    inset: 0.52vw;
     border-radius: 50%;
     background: $main;
   }
@@ -69,18 +66,18 @@ export default {
   &.contract {
     &::after {
       background-image: url("/src/assets/img/contract.png");
-      background-size: calc((64px / 1920px) * 100vw);
+      background-size: 3.33vw;
       background-repeat: no-repeat;
-      background-position: 70% 50%;
+      background-position: 1.3vw 0.78vw;
     }
   }
 
   &.test {
     &::after {
       background-image: url("/src/assets/img/test.png");
-      background-size: calc((64px / 1920px) * 100vw);
+      background-size: 3.33vw;
       background-repeat: no-repeat;
-      background-position: 65% 50%;
+      background-position: 1.2vw 0.76vw;
     }
   }
 
@@ -101,14 +98,13 @@ export default {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: calc((44px / 1920px) * 100vw);
+      font-size: $f44;
       z-index: 1;
       font-weight: 600;
       line-height: 1.2;
     }
 
     &-descr {
-      font-size: calc((16px / 1920px) * 100vw);
       font-weight: 500;
     }
   }

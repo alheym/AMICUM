@@ -11,7 +11,6 @@ export default {
   },
   methods: {
     handleClick() {
-      // Вызываем событие "item-clicked" и передаем заголовок элемента
       this.$emit("item-clicked", this.title);
     },
   },
@@ -34,38 +33,44 @@ export default {
 .action {
   position: relative;
   cursor: pointer;
-  width: calc((390px / 1920px) * 100vw);
-  height: calc((300px / 1920px) * 100vw);
+  width: 20.31vw;
+  height: 15.62vw;
   background-color: $orange;
-  border-radius: calc((3px / 1080px) * 100vh);
+  border-radius: 0.28vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 5px 4px 7px rgba(0, 0, 0, 0.2);
+  box-shadow: 0.26vw 0.2vw 0.36vw rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 
   &__title {
-    font-size: calc((24px / 1920px) * 100vw);
-    margin: calc((30px / 1920px) * 100vw) 0;
+    font-size: $f24;
+    margin: 1.56vw 0;
   }
 
   &__icon {
-    width: calc((130px / 1920px) * 100vw);
-    margin-bottom: calc((30px / 1920px) * 100vw);
+    width: 6.77vw;
+    margin-bottom: 1.56vw;
   }
   &__notification {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     position: absolute;
-    top: calc((-30px / 1920px) * 100vw);
-    right: calc((-30px / 1920px) * 100vw);
-    width: calc((60px / 1920px) * 100vw);
-    height: calc((60px / 1920px) * 100vw);
+    top: -1.56vw;
+    right: -1.56vw;
+    width: 3.12vw;
+    height: 3.12vw;
     border-radius: 50%;
     background-color: $notification;
-    box-shadow: 5px 4px 7px rgba(0, 0, 0, 0.2);
+    box-shadow: 0.26vw 0.2vw 0.36vw rgba(0, 0, 0, 0.3);
     color: black;
-    text-align: center;
-    padding: calc((10px / 1920px) * 100vw);
-    font-size: calc((24px / 1920px) * 100vw);
+    font-size: $f24;
     font-weight: 600;
   }
 }
