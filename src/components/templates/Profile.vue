@@ -79,7 +79,7 @@ export default {
         </div>
         <div class="profile__menu-out" @click="handleLogout">
           Выход
-          <img src="img/out.png" alt="Выход" class="profile__menu-out-icon" />
+          <div class="profile__menu-out-icon"></div>
         </div>
       </div>
 
@@ -162,8 +162,12 @@ export default {
       align-items: center;
       font-weight: 500;
       &-icon {
-        margin-left: 0.78vw;
         width: 2.08vw;
+        height: 2.08vw;
+        background-image: url("/src/assets/img/out.png");
+        background-size: 2.08vw;
+        background-repeat: no-repeat;
+        margin-left: 0.78vw;
       }
     }
   }
