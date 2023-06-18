@@ -1,4 +1,4 @@
-![vue](https://img.shields.io/github/languages/top/alheym/AMICUM?style=flat-square&color=%2325c2a0)
+![vue](https://img.shields.io/github/languages/top/alheym/AMICUM?style=flat-square&color=%2325c2a0) [![Netlify Status](https://api.netlify.com/api/v1/badges/03b1b1af-a758-4435-a310-7aefbbbb7f4b/deploy-status)](https://app.netlify.com/sites/chipper-puffpuff-61478f/deploys)
 
 # AMICUM
 
@@ -26,7 +26,7 @@
 npm i
 ```
 
-запуск проекта с наблюдением за файлами (Hot Reloading):
+Запуск проекта с наблюдением за файлами (Hot Reloading):
 
 ```bash
 npm run dev
@@ -34,3 +34,6 @@ npm run dev
 
 ## UI
 [Макет](https://www.figma.com/file/z6Od6tdbv55VyyQODynkg4/ТЗ-Фронт-энд?type=whiteboard&node-id=0-1&t=XvpHoS9TsVxjon75-0)
+
+## Netlify
+[Netlify](https://chipper-puffpuff-61478f.netlify.app/)

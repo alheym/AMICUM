@@ -147,9 +147,11 @@ export default {
   &__menu {
     display: flex;
     justify-content: space-between;
+
     &-date {
       display: flex;
       flex-direction: column;
+      
       &-year,
       &-time {
         font-weight: 500;
@@ -161,9 +163,14 @@ export default {
       display: flex;
       align-items: center;
       font-weight: 500;
+
       &-icon {
-        margin-left: 0.78vw;
         width: 2.08vw;
+        height: 2.08vw;
+        background-image: url("/src/assets/img/out.png");
+        background-size: 2.08vw;
+        background-repeat: no-repeat;
+        margin-left: 0.78vw;
       }
     }
   }
@@ -175,6 +182,7 @@ export default {
     justify-content: space-between;
     margin-bottom: 3.65vw;
   }
+
   &__theme {
     margin-left: auto;
   }
