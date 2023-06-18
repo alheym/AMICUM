@@ -35,18 +35,22 @@ export default {
 
 <template>
   <section class="profile">
-    <div class="profile__menu">
-      <div class="profile__menu-date">
-        <div class="profile__menu-date-year">XX.XX.XXXX</div>
-        <div class="profile__menu-date-time">XX:XX</div>
+    <div class="profile__header">
+      <div class="profile__menu">
+        <div class="profile__menu-date">
+          <div class="profile__menu-date-year">XX.XX.XXXX</div>
+          <div class="profile__menu-date-time">XX:XX</div>
+        </div>
+        <div class="profile__menu-out" @click="handleLogout">
+          Выход
+          <img src="img/out.png" alt="Выход" class="profile__menu-out-icon" />
+        </div>
       </div>
-      <div class="profile__menu-out" @click="handleLogout">
-        Выход
-        <img src="img/out.png" alt="Выход" class="profile__menu-out-icon" />
+
+      <div class="profile__theme">
+        <ThemeSwitch />
       </div>
     </div>
-
-    <ThemeSwitch />
 
     <div class="profile__info">
       <div class="profile__info-fullName">{{ fullName }}</div>
@@ -89,19 +93,18 @@ export default {
 @import "../../assets/styles/main";
 
 .profile {
-  width: 34.375%;
+  width: 34.375vw;
   display: flex;
   padding: calc((40px / 1920px) * 100vw);
   flex-direction: column;
   background-color: $profile;
   border-top-right-radius: calc((20px / 1080px) * 100vh);
   border-bottom-right-radius: calc((20px / 1080px) * 100vh);
-  box-shadow: 5px 2px 7px rgba(0, 0, 0, 0.3);
+  // box-shadow: 5px 2px 7px rgba(0, 0, 0, 0.3);
 
   &__menu {
     display: flex;
-    // height: 22.22%;
-    margin-bottom: 11%;
+    // margin-bottom: calc((40px / 1920px) * 100vw);
     justify-content: space-between;
     &-date {
       display: flex;
@@ -126,6 +129,13 @@ export default {
     }
   }
 
+  &__header {
+    display: flex;
+    flex-direction: column;
+    height: calc((150px / 1920px) * 100vw);
+    justify-content: space-between;
+    margin-bottom: calc((70px / 1920px) * 100vw);
+  }
   &__theme {
     margin-left: auto;
   }
@@ -139,7 +149,7 @@ export default {
     &-fullName {
       font-weight: 600;
       font-size: calc((32px / 1920px) * 100vw);
-      margin-bottom: calc((5px / 1080px) * 100vh);
+      margin-bottom: calc((5px / 1920px) * 100vw);
     }
 
     &-birthday {
@@ -149,12 +159,11 @@ export default {
 
     &-descr {
       font-size: calc((16px / 1920px) * 100vw);
-      margin-bottom: calc((10px / 1080px) * 100vh);
+      margin-bottom: calc((10px / 1920px) * 100vw);
     }
 
     &-position {
       font-size: calc((16px / 1920px) * 100vw);
-      // margin-bottom: calc((5px / 1080px) * 100vh);
     }
   }
 
@@ -162,7 +171,7 @@ export default {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: calc((20px / 1920px) * 100vw);
-    margin-top: calc((20px / 1080px) * 100vh);
+    margin-top: calc((20px / 1920px) * 100vw);
 
     &-item {
       padding: 0 calc((60px / 1920px) * 100vw) calc((20px / 1920px) * 100vw);
@@ -173,24 +182,24 @@ export default {
       border-radius: calc((3px / 1080px) * 100vh);
       background-color: $main;
       width: calc((260px / 1920px) * 100vw);
-      height: calc((260px / 1080px) * 100vh);
+      height: calc((260px / 1920px) * 100vw);
       box-shadow: 5px 4px 7px rgba(0, 0, 0, 0.2);
 
       &-title {
-        height: calc((44px / 1080px) * 100vh);
+        height: calc((44px / 1920px) * 100vw);
         text-align: center;
         font-size: calc((16px / 1920px) * 100vw);
       }
 
-      @media screen and (max-width: 700px) {
-        width: auto;
-        height: calc((170px / 1080px) * 100vh);
-      }
+      // @media screen and (max-width: 700px) {
+      //   width: auto;
+      //   height: calc((170px / 1080px) * 100vh);
+      // }
     }
 
-    @media screen and (max-width: 700px) {
-      grid-template-columns: 1fr;
-    }
+    // @media screen and (max-width: 700px) {
+    //   grid-template-columns: 1fr;
+    // }
   }
 }
 </style>

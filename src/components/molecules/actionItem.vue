@@ -32,6 +32,7 @@ export default {
 @import "../../assets/styles/main";
 
 .action {
+  position: relative;
   cursor: pointer;
   width: calc((390px / 1920px) * 100vw);
   height: calc((300px / 1920px) * 100vw);
@@ -54,13 +55,18 @@ export default {
   }
   &__notification {
     position: absolute;
-    &::before {
-      content: "";
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background-color: $notification;
-    }
+    top: calc((-30px / 1920px) * 100vw);
+    right: calc((-30px / 1920px) * 100vw);
+    width: calc((60px / 1920px) * 100vw);
+    height: calc((60px / 1920px) * 100vw);
+    border-radius: 50%;
+    background-color: $notification;
+    box-shadow: 5px 4px 7px rgba(0, 0, 0, 0.2);
+    color: black;
+    text-align: center;
+    padding: calc((10px / 1920px) * 100vw);
+    font-size: calc((24px / 1920px) * 100vw);
+    font-weight: 600;
   }
 }
 </style>

@@ -28,9 +28,6 @@ export default {
 @import "../../assets/styles/main";
 
 .themeSwitch {
-  margin-left: auto;
-  margin-bottom: calc((70px / 1920px) * 100vw);
-
   &__switch {
     position: relative;
     display: inline-block;

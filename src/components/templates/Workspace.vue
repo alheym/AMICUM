@@ -77,6 +77,7 @@ export default {
   }
 
   &__actions {
+    align-self: center;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: calc((100px / 1920px) * 100vw);
