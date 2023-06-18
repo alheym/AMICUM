@@ -1,29 +1,32 @@
-# amicum_test
+# AMICUM
 
-This template should help get you started developing with Vue 3 in Vite.
+Тестовое задание для компании AMICUM на позицию frontend-разработчик.
+В соответствии с требованиями была реализована резиновая-верстка и интерактивность.
+Основные элементы интерфейса реагируют на событие click и выводят в консоль заголовок компонента, на котором оно сработало.
+Добавлено изменение размеров элементов при наведении курсора, для большего интуитивного восприятия.
+Для переключателя тем добавлено дополнительное отображение состояния (sun/moon).
 
-## Recommended IDE Setup
+## Стек
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+<div>
+  	<img src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg" title="JS" alt="JS" width="40" height="40"/>&nbsp;
+	<img src="https://github.com/devicons/devicon/blob/master/icons/sass/sass-original.svg" title="Sass" alt="Sass" width="40" height="40"/>&nbsp;
+	<img src="https://github.com/devicons/devicon/blob/master/icons/vuejs/vuejs-original.svg" title="Vue" alt="Vue" width="40" height="40"/>&nbsp;
+</div>
 
-## Customize configuration
+## Установка
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+Установка зависимостей:
 
-## Project Setup
-
-```sh
-npm install
+```bash
+npm i
 ```
 
-### Compile and Hot-Reload for Development
+запуск проекта с наблюдением за файлами (Hot Reloading):
 
-```sh
+```bash
 npm run dev
 ```
 
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+## UI
+[Макет](https://www.figma.com/file/z6Od6tdbv55VyyQODynkg4/ТЗ-Фронт-энд?type=whiteboard&node-id=0-1&t=XvpHoS9TsVxjon75-0)
