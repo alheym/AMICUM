@@ -1,11 +1,13 @@
 <script>
 import ProgressBar from "../atoms/progressBar.vue";
 import ThemeSwitch from "../atoms/toggleSwitch.vue";
+import ProfileItem from "../molecules/profileItem.vue";
 
 export default {
   components: {
     ProgressBar,
     ThemeSwitch,
+    ProfileItem,
   },
   props: {
     fullName: {
@@ -25,10 +27,44 @@ export default {
       default: "Проходчик IV разряда",
     },
   },
+  data() {
+    return {
+      currentTime: "",
+    };
+  },
   methods: {
     handleLogout() {
       console.log("Выход");
     },
+
+    handleItemClick(title) {
+      console.log("Click:", title);
+    },
+
+    getCurrentDateTime() {
+      const currentDate = new Date();
+      const date = currentDate.toLocaleDateString("ru-RU", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      });
+      const time = currentDate.toLocaleTimeString("ru-RU", {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+      return { date, time };
+    },
+  },
+  computed: {
+    currentDateTime() {
+      return this.getCurrentDateTime();
+    },
+  },
+  mounted() {
+    this.currentTime = this.getCurrentDateTime().time;
+    setInterval(() => {
+      this.currentTime = this.getCurrentDateTime().time;
+    }, 1000);
   },
 };
 </script>
@@ -38,8 +74,8 @@ export default {
     <div class="profile__header">
       <div class="profile__menu">
         <div class="profile__menu-date">
-          <div class="profile__menu-date-year">XX.XX.XXXX</div>
-          <div class="profile__menu-date-time">XX:XX</div>
+          <div class="profile__menu-date-year">{{ currentDateTime.date }}</div>
+          <div class="profile__menu-date-time">{{ currentTime }}</div>
         </div>
         <div class="profile__menu-out" @click="handleLogout">
           Выход
@@ -60,31 +96,37 @@ export default {
     </div>
 
     <div class="profile__progress">
-      <div class="profile__progress-item">
-        <div class="profile__progress-item-title">Инструктаж</div>
-        <ProgressBar class="contract" progress="100" color="#add919" />
-      </div>
-      <div class="profile__progress-item">
-        <div class="profile__progress-item-title">Предсменный экзаменатор</div>
-
-        <ProgressBar class="test" progress="100" color="#add919" />
-      </div>
-
-      <div class="profile__progress-item">
-        <div class="profile__progress-item-title">Тестов выполнено</div>
-        <ProgressBar class="less_50" progress="25" score="12" color="#add919" />
-      </div>
-
-      <div class="profile__progress-item">
-        <div class="profile__progress-item-title">Аттестация через</div>
-        <ProgressBar
-          class="less_50 with_descr"
-          progress="15"
-          score="3"
-          descr="дня"
-          color="#ef7f1b"
-        />
-      </div>
+      <ProfileItem
+        title="Инструктаж"
+        class="contract"
+        :progress="100"
+        color="#add919"
+        @item-clicked="handleItemClick"
+      />
+      <ProfileItem
+        title="Предсменный экзаменатор"
+        class="test"
+        :progress="100"
+        color="#add919"
+        @item-clicked="handleItemClick"
+      />
+      <ProfileItem
+        title="Тестов выполнено"
+        class="less_50"
+        :progress="25"
+        score="12"
+        color="#add919"
+        @item-clicked="handleItemClick"
+      />
+      <ProfileItem
+        title="Аттестация через"
+        class="less_50 with_descr"
+        :progress="15"
+        score="3"
+        descr="дня"
+        color="#ef7f1b"
+        @item-clicked="handleItemClick"
+      />
     </div>
   </section>
 </template>
@@ -95,23 +137,21 @@ export default {
 .profile {
   width: 34.375vw;
   display: flex;
-  padding: calc((40px / 1920px) * 100vw);
+  padding: 2.08vw;
   flex-direction: column;
   background-color: $profile;
-  border-top-right-radius: calc((20px / 1080px) * 100vh);
-  border-bottom-right-radius: calc((20px / 1080px) * 100vh);
-  // box-shadow: 5px 2px 7px rgba(0, 0, 0, 0.3);
+  border-top-right-radius: 1.85vh;
+  border-bottom-right-radius: 1.85vh;
+  box-shadow: 0.26vw 0.2vw 0.36vw rgba(0, 0, 0, 0.3);
 
   &__menu {
     display: flex;
-    // margin-bottom: calc((40px / 1920px) * 100vw);
     justify-content: space-between;
     &-date {
       display: flex;
       flex-direction: column;
       &-year,
       &-time {
-        font-size: calc((16px / 1920px) * 100vw);
         font-weight: 500;
       }
     }
@@ -120,11 +160,10 @@ export default {
       cursor: pointer;
       display: flex;
       align-items: center;
-      font-size: calc((16px / 1920px) * 100vw);
       font-weight: 500;
       &-icon {
-        margin-left: calc((15px / 1920px) * 100vw);
-        width: calc((40px / 1920px) * 100vw);
+        margin-left: 0.78vw;
+        width: 2.08vw;
       }
     }
   }
@@ -132,74 +171,41 @@ export default {
   &__header {
     display: flex;
     flex-direction: column;
-    height: calc((150px / 1920px) * 100vw);
+    height: 7.81vw;
     justify-content: space-between;
-    margin-bottom: calc((70px / 1920px) * 100vw);
+    margin-bottom: 3.65vw;
   }
   &__theme {
     margin-left: auto;
   }
 
   &__info {
-    padding: calc((20px / 1920px) * 100vw) calc((30px / 1920px) * 100vw);
+    padding: 1.04vw 1.56vw;
     background-color: $main;
-    border-radius: calc((3px / 1080px) * 100vh);
-    box-shadow: 5px 4px 7px rgba(0, 0, 0, 0.2);
+    border-radius: 0.28vh;
+    box-shadow: 0.26vw 0.2vw 0.36vw rgba(0, 0, 0, 0.3);
 
     &-fullName {
       font-weight: 600;
-      font-size: calc((32px / 1920px) * 100vw);
-      margin-bottom: calc((5px / 1920px) * 100vw);
+      font-size: $f32;
+      margin-bottom: 0.26vw;
     }
 
     &-birthday {
-      font-size: calc((24px / 1920px) * 100vw);
-      margin-bottom: calc((10px / 1080px) * 100vh);
+      font-size: $f24;
+      margin-bottom: 0.52vw;
     }
 
     &-descr {
-      font-size: calc((16px / 1920px) * 100vw);
-      margin-bottom: calc((10px / 1920px) * 100vw);
-    }
-
-    &-position {
-      font-size: calc((16px / 1920px) * 100vw);
+      margin-bottom: 0.52vw;
     }
   }
 
   &__progress {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: calc((20px / 1920px) * 100vw);
-    margin-top: calc((20px / 1920px) * 100vw);
-
-    &-item {
-      padding: 0 calc((60px / 1920px) * 100vw) calc((20px / 1920px) * 100vw);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-      align-items: center;
-      border-radius: calc((3px / 1080px) * 100vh);
-      background-color: $main;
-      width: calc((260px / 1920px) * 100vw);
-      height: calc((260px / 1920px) * 100vw);
-      box-shadow: 5px 4px 7px rgba(0, 0, 0, 0.2);
-
-      &-title {
-        height: calc((44px / 1920px) * 100vw);
-        text-align: center;
-        font-size: calc((16px / 1920px) * 100vw);
-      }
-
-      // @media screen and (max-width: 700px) {
-      //   width: auto;
-      //   height: calc((170px / 1080px) * 100vh);
-      // }
-    }
-
-    // @media screen and (max-width: 700px) {
-    //   grid-template-columns: 1fr;
-    // }
+    grid-gap: 1.04vw;
+    margin-top: 1.04vw;
   }
 }
 </style>
